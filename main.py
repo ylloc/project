@@ -5,8 +5,6 @@ import typing
 
 import nbformat
 
-SPECIAL_TOKEN = "[ИЗМЕНЕНО СТУДЕНТОМ]."
-
 
 @dataclasses.dataclass
 class Cell:
@@ -123,11 +121,13 @@ def combine_modified_cells(tasks: typing.List[typing.List[Cell]]) -> typing.List
 
 
 EXPECTED_TASKS = 3
+SPECIAL_TOKEN = "[ИЗМЕНЕНО СТУДЕНТОМ]."
 
 if __name__ == "__main__":
     orig_work_path = "data/test.ipynb"
     orig_cells = get_filtered_notebook_cells_from_dir(orig_work_path)
 
+    # for example only
     for notebook_path in ["test/done_work.ipynb"]:  # get_filenames_from_directory()
         student_cells = get_filtered_notebook_cells_from_dir(notebook_path)
         marked_cells = mark_modified_cells(orig_cells, student_cells)
